@@ -11,11 +11,15 @@
 
 Download or `git clone` this repo.
 
-# List style menu bar app
+## List style menu bar app
 
 Add example.
 
-## Demo App Key Points
+## Demo App
+
+Add screenshot.
+
+### Key Points
 
 1. `MenuBarExtra`
 2. `import CoreWLAN`
@@ -23,6 +27,6 @@ Add example.
 
 ## Links
 
-[Apple Developer Documentation - MenuBarExtra](https://developer.apple.com/documentation/swiftui/menubarextra)
-[Apple Developer Documentation - CWWiFiClient](https://developer.apple.com/documentation/corewlan/cwwificlient)
-[Apple Developer Documentation - Gauge](https://developer.apple.com/documentation/swiftui/gauge)
+- [Apple Developer Documentation - MenuBarExtra](https://developer.apple.com/documentation/swiftui/menubarextra)
+- [Apple Developer Documentation - CWWiFiClient](https://developer.apple.com/documentation/corewlan/cwwificlient)
+- [Apple Developer Documentation - Gauge](https://developer.apple.com/documentation/swiftui/gauge)
