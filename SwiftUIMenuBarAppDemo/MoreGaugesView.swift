@@ -133,9 +133,9 @@ struct MoreGaugesView: View {
                 // Use RSSI signal strength for Wi-Fi SF Symbol
                 wifiSymbolValue(using: rssi.currentValue)
                 
-                NSLog("RSSI: \(rssi.nameAndUnit)")
-                NSLog("Noise: \(noise.nameAndUnit)")
-                NSLog("SNR: \(snr.nameAndUnit)")
+                NSLog("RSSI: \(rssi.valueAndUnit)")
+                NSLog("Noise: \(noise.valueAndUnit)")
+                NSLog("SNR: \(snr.valueAndUnit)")
                 
                 let delay = UInt64(intervalInSeconds * Double(NSEC_PER_SEC))
                 try await Task.sleep(nanoseconds: delay)
@@ -206,8 +206,8 @@ struct WiFiProperty {
     
     // MARK: Computed vars
     
-    var nameAndUnit: String {
-        "\(name) \(unit)"
+    var valueAndUnit: String {
+        "\(currentValue) \(unit)"
     }
     
     var signalDescription: String {
