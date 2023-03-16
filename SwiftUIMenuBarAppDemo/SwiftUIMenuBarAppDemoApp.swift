@@ -11,11 +11,11 @@ import SwiftUI
 struct SwiftUIMenuBarAppDemoApp: App {
     var body: some Scene {
         MenuBarExtra("Wi-Fi Info", systemImage: "wifi.square") {
-            MenuBarList()
-            // MenuBarWindow()
+            // MenuBarList()
+            MenuBarWindow()
             // MoreGaugesView()
         }
-        .menuBarExtraStyle(.menu)
-        // .menuBarExtraStyle(.window)
+        // .menuBarExtraStyle(.menu)
+        .menuBarExtraStyle(.window)
     }
 }

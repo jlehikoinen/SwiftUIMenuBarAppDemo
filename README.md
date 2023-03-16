@@ -2,6 +2,8 @@
 
 *SwiftUI Menu Bar App* demo called `Wi-Fi Info` for FinMacAdmin meetup 25.05.2023.
 
+![Demo app](Screenshots/WindowExample.png)
+
 ## Requirements
 
 * macOS Ventura
@@ -11,13 +13,47 @@
 
 Download or `git clone` this repo.
 
-## List style menu bar app
+## List style menu bar app example
 
-Add example.
+Edit `SwiftUIMenuBarAppDemoApp.swift`:
 
-## Demo App
+```swift
+MenuBarExtra("Wi-Fi Info", systemImage: "wifi.square") {
+    MenuBarList()
+    // MenuBarWindow()
+    // MoreGaugesView()
+}
+.menuBarExtraStyle(.menu)
+// .menuBarExtraStyle(.window)
+```
 
-Add screenshot.
+## Window style menu bar app example
+
+Edit `SwiftUIMenuBarAppDemoApp.swift`:
+
+```swift
+MenuBarExtra("Wi-Fi Info", systemImage: "wifi.square") {
+    // MenuBarList()
+    MenuBarWindow()
+    // MoreGaugesView()
+}
+// .menuBarExtraStyle(.menu)
+.menuBarExtraStyle(.window)
+```
+
+## Bonus example with more gauges
+
+Edit `SwiftUIMenuBarAppDemoApp.swift`:
+
+```swift
+MenuBarExtra("Wi-Fi Info", systemImage: "wifi.square") {
+    // MenuBarList()
+    // MenuBarWindow()
+    MoreGaugesView()
+}
+// .menuBarExtraStyle(.menu)
+.menuBarExtraStyle(.window)
+```
 
 ### Key Points
 
