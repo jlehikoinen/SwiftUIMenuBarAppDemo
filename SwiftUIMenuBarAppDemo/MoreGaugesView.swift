@@ -49,8 +49,10 @@ struct MoreGaugesView: View {
             header
             Divider()
             infoTexts
-            Divider()
-            gauges
+            if sfSymbolvalue > 0.0 {
+                Divider()
+                gauges
+            }
         }
         .padding()
         .onAppear {
@@ -125,10 +127,6 @@ struct MoreGaugesView: View {
                 rssi.currentValue = Double(CWWiFiClient.shared().interface()?.rssiValue() ?? 0)
                 noise.currentValue = Double(CWWiFiClient.shared().interface()?.noiseMeasurement() ?? 0)
                 snr.currentValue = rssi.currentValue - noise.currentValue
-                // .rssiValue returns Int(0) if Wi-Fi is turned off or the signal is really bad
-                // This causes: "Gauge initialized with an out-of-bounds progress amount. The amount will be clamped to the nearest bound."
-                // Workaround:
-                if rssi.currentValue == 0.0 { rssi.currentValue = -100.0 }
                 
                 // Use RSSI signal strength for Wi-Fi SF Symbol
                 wifiSymbolValue(using: rssi.currentValue)
@@ -273,6 +271,7 @@ enum SignalQuality: String {
     static let minNoiseValue: Double = -100.0
     static let maxNoiseValue: Double = 0.0
     
+    // Note! These ranges are fabricated, hence they are inaccurate
     static let noiseRange: [SignalQuality: ClosedRange<Double>] = [
         .excellent: -100.0 ... -80.0,
         .good:      -80.0 ... -60.0,
@@ -285,6 +284,7 @@ enum SignalQuality: String {
     static let minSNRValue: Double = 0.0
     static let maxSNRValue: Double = 100.0
     
+    // Note! These ranges are fabricated, hence they are inaccurate
     static let snrRange: [SignalQuality: ClosedRange<Double>] = [
         .excellent: 30.0...80.0,
         .good:      25.0...30.0,

@@ -30,10 +30,8 @@ struct MenuBarWindow: View {
             header
             Divider()
             infoTexts
-            Divider()
-            
-            // TODO: Remove?
             if sfSymbolvalue > 0.0 {
+                Divider()
                 rssiGauge
             }
         }
@@ -108,13 +106,7 @@ struct MenuBarWindow: View {
     
         Task {
             while true {
-                
                 currentRSSIValue = Double(CWWiFiClient.shared().interface()?.rssiValue() ?? 0)
-                // .rssiValue returns Int(0) if Wi-Fi is turned off or the signal is really bad
-                // This causes: "Gauge initialized with an out-of-bounds progress amount. The amount will be clamped to the nearest bound."
-                // Workaround:
-                if currentRSSIValue == 0.0 { currentRSSIValue = -100.0 }
-
                 NSLog("RSSI: \(currentRSSIValue) dBm")
                 updateRSSIUIComponents(value: currentRSSIValue)
                 
