@@ -12,8 +12,8 @@ struct SwiftUIMenuBarAppDemoApp: App {
     var body: some Scene {
         MenuBarExtra("Wi-Fi Info", systemImage: "wifi.square") {
             // MenuBarList()
-            // MenuBarWindow()
-            MoreGaugesView()
+            MenuBarWindow()
+            // MoreGaugesView()
         }
         // .menuBarExtraStyle(.menu)
         .menuBarExtraStyle(.window)

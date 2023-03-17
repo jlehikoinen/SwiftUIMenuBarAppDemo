@@ -24,7 +24,6 @@ struct MoreGaugesView: View {
     // MARK: Init
     
     init() {
-        
         self.rssi = WiFiProperty(
             type: .rssi, unit: .decibelMilliwatts,
             minValue: SignalQuality.minRSSIValue, maxValue: SignalQuality.maxRSSIValue,
@@ -177,14 +176,6 @@ struct GaugeView: View {
                 Text(wifiProperty.valueAndUnit)
                     .font(.system(size: 10, design: .monospaced))
                     .foregroundColor(.primary)
-            } minimumValueLabel: {
-                Text("\(Int(wifiProperty.minValue))")
-                    .font(.system(size: 10, design: .monospaced))
-                    .foregroundColor(.secondary)
-            } maximumValueLabel: {
-                Text("\(Int(wifiProperty.maxValue))")
-                    .font(.system(size: 10, design: .monospaced))
-                    .foregroundColor(.secondary)
             }
             .gaugeStyle(.accessoryCircularCapacity)
             .tint(wifiProperty.accentColor)
@@ -227,7 +218,7 @@ struct WiFiProperty {
     // MARK: Computed vars
     
     var valueAndUnit: String {
-        "\(currentValue) \(unit.rawValue)"
+        "\(Int(currentValue)) \(unit.rawValue)"
     }
     
     // MARK: Private methods
