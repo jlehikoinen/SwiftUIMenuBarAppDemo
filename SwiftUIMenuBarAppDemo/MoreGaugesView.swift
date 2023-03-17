@@ -24,18 +24,19 @@ struct MoreGaugesView: View {
     // MARK: Init
     
     init() {
+        
         self.rssi = WiFiProperty(
-            name: "RSSI", unit: "dBm",
+            type: .rssi, unit: .decibelMilliwatts,
             minValue: SignalQuality.minRSSIValue, maxValue: SignalQuality.maxRSSIValue,
             currentValue: SignalQuality.minRSSIValue, ranges: SignalQuality.rssiRange
         )
         self.noise = WiFiProperty(
-            name: "Noise", unit: "dBm",
+            type: .noise, unit: .decibelMilliwatts,
             minValue: SignalQuality.minNoiseValue, maxValue: SignalQuality.maxNoiseValue,
             currentValue: SignalQuality.minNoiseValue, ranges: SignalQuality.noiseRange
         )
         self.snr = WiFiProperty(
-            name: "SNR", unit: "dB",
+            type: .snr, unit: .decibel,
             minValue: SignalQuality.minSNRValue, maxValue: SignalQuality.maxSNRValue,
             currentValue: SignalQuality.minSNRValue, ranges: SignalQuality.snrRange
         )
@@ -169,11 +170,11 @@ struct GaugeView: View {
     var body: some View {
         
         VStack {
-            Text(wifiProperty.name)
+            Text(wifiProperty.type.rawValue)
                 .font(.system(size: 12, design: .monospaced))
             Gauge(value: wifiProperty.currentValue, in: wifiProperty.minValue...wifiProperty.maxValue) {
             } currentValueLabel: {
-                Text("\(Int(wifiProperty.currentValue)) \(wifiProperty.unit)")
+                Text(wifiProperty.valueAndUnit)
                     .font(.system(size: 10, design: .monospaced))
                     .foregroundColor(.primary)
             } minimumValueLabel: {
@@ -195,57 +196,81 @@ struct GaugeView: View {
 
 struct WiFiProperty {
     
-    let name: String
-    let unit: String
+    let type: WiFiPropertyType
+    let unit: Unit
     let minValue: Double
     let maxValue: Double
-    var currentValue: Double
-    var ranges: [SignalQuality: ClosedRange<Double>]
+    var currentValue: Double {
+        didSet { updateDescriptionAndColor() }
+    }
+    
+    let ranges: [SignalQuality: ClosedRange<Double>]
+    var signalDescription: String
+    var accentColor: Color
+    
+    // MARK: Init
+    
+    init(type: WiFiPropertyType, unit: Unit,
+         minValue: Double, maxValue: Double,
+         currentValue: Double, ranges: [SignalQuality: ClosedRange<Double>]) {
+        
+        self.type = type
+        self.unit = unit
+        self.minValue = minValue
+        self.maxValue = maxValue
+        self.currentValue = currentValue
+        self.ranges = ranges
+        self.signalDescription = "No signal"
+        self.accentColor = .secondary
+    }
     
     // MARK: Computed vars
     
     var valueAndUnit: String {
-        "\(currentValue) \(unit)"
+        "\(currentValue) \(unit.rawValue)"
     }
     
-    var signalDescription: String {
+    // MARK: Private methods
+    
+    private mutating func updateDescriptionAndColor() {
         
         switch currentValue {
         case ranges[.excellent]!:
-            return "Excellent"
+            self.signalDescription = "Excellent"
+            self.accentColor = .green
         case ranges[.good]!:
-            return "Good"
+            self.signalDescription = "Good"
+            self.accentColor = .yellow
         case ranges[.fair]!:
-            return "Fair"
+            self.signalDescription = "Fair"
+            self.accentColor = .orange
         case ranges[.poor]!:
-            return "Poor"
+            self.signalDescription = "Poor"
+            self.accentColor = .red
         case ranges[.noSignal]!:
-            return "No signal"
+            self.signalDescription = "No signal"
+            self.accentColor = .secondary
         default:
-            return "No signal"
-        }
-    }
-    
-    var accentColor: Color {
-        
-        switch currentValue {
-        case ranges[.excellent]!:
-            return .green
-        case ranges[.good]!:
-            return .yellow
-        case ranges[.fair]!:
-            return .orange
-        case ranges[.poor]!:
-            return .red
-        case ranges[.noSignal]!:
-            return .secondary
-        default:
-            return .secondary
+            self.signalDescription = "No signal"
+            self.accentColor = .secondary
         }
     }
 }
 
 // MARK: Enums
+
+enum WiFiPropertyType: String {
+    
+    case rssi = "RSSI"
+    case noise = "Noise"
+    case snr = "SNR"
+}
+
+enum Unit: String {
+    
+    case decibelMilliwatts = "dBm"
+    case decibel = "dB"
+}
 
 enum SignalQuality: String {
 
