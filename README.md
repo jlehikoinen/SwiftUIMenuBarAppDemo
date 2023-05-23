@@ -1,7 +1,5 @@
 # SwiftUI Menu Bar App Demo
 
-_WIP_
-
 *SwiftUI Menu Bar App* demo for FinMacAdmin meetup 25.05.2023.
 
 ![Demo app](Screenshots/WindowExample.png)
@@ -13,7 +11,8 @@ _WIP_
 
 ## Setup
 
-Download or `git clone` this repo.
+* Download or `git clone` this repo
+* Edit `Team` value in project TARGETS > `Signing & Capabilities`
 
 ## List style menu bar app example
 
@@ -56,12 +55,6 @@ MenuBarExtra("Wi-Fi Info", systemImage: "wifi.square") {
 // .menuBarExtraStyle(.menu)
 .menuBarExtraStyle(.window)
 ```
-
-### Key Points
-
-1. `MenuBarExtra`
-2. `import CoreWLAN`
-3. `Gauge`
 
 ## Links
 

@@ -14,8 +14,8 @@ struct MenuBarWindow: View {
     
     // Gauge
     @State private var currentRSSIValue: Double = -100.0
-    @State private var minRSSIValue: Double = -100.0
-    @State private var maxRSSIValue: Double = -20.0
+    private var minRSSIValue: Double = -100.0
+    private var maxRSSIValue: Double = -20.0
     
     // Other UI components
     @State private var sfSymbolvalue: Double = 0.0
