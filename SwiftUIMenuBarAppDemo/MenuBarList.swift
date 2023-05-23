@@ -10,19 +10,21 @@ import SwiftUI
 struct MenuBarList: View {
     
     var body: some View {
-        
-        Text("Hello FinMacAdmin!")
-            .font(.largeTitle)
-            .bold()
-            .foregroundColor(.indigo)
-        Divider()
-        Button("Open Terminal") {
-            open("/System/Applications/Utilities/Terminal.app")
+        VStack {
+            Text("Hello FinMacAdmin!")
+                .font(.largeTitle)
+                .bold()
+                .foregroundColor(.indigo)
+            Divider()
+            Button("Open Terminal") {
+                open("/System/Applications/Utilities/Terminal.app")
+            }
+            Divider()
+            Button("Quit") {
+                quitApp()
+            }
         }
-        Divider()
-        Button("Quit") {
-            quitApp()
-        }
+        .padding(.vertical)
     }
     
     private func open(_ path: String) {
