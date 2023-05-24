@@ -12,7 +12,8 @@
 ## Setup
 
 * Download or `git clone` this repo
-* Edit `Team` value in project TARGETS > `Signing & Capabilities`
+* Edit `Team` value in Xcode project's `TARGETS` > `Signing & Capabilities`
+* Build and Run
 
 ## List style menu bar app example
 
@@ -58,6 +59,6 @@ MenuBarExtra("Wi-Fi Info", systemImage: "wifi.square") {
 
 ## Links
 
-- [Apple Developer Documentation - MenuBarExtra](https://developer.apple.com/documentation/swiftui/menubarextra)
-- [Apple Developer Documentation - CWWiFiClient](https://developer.apple.com/documentation/corewlan/cwwificlient)
-- [Apple Developer Documentation - Gauge](https://developer.apple.com/documentation/swiftui/gauge)
+* [Apple Developer Documentation - MenuBarExtra](https://developer.apple.com/documentation/swiftui/menubarextra)
+* [Apple Developer Documentation - Gauge](https://developer.apple.com/documentation/swiftui/gauge)
+* [Apple Developer Documentation - CWWiFiClient](https://developer.apple.com/documentation/corewlan/cwwificlient)
