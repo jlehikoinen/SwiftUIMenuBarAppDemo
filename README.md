@@ -1,6 +1,6 @@
 # SwiftUI Menu Bar App Demo
 
-*SwiftUI Menu Bar App* demo for FinMacAdmin meetup 25.05.2023.
+**SwiftUI Menu Bar App** demo for FinMacAdmin meetup 25.05.2023.
 
 ![Demo app](Screenshots/WindowExample.png)
 
