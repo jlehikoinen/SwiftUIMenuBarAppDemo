@@ -56,6 +56,7 @@ struct MoreGaugesView: View {
         }
         .padding()
         .onAppear {
+            LocationDataManager.shared.locationManager.requestAlwaysAuthorization()
             pollSSIDName()
             pollWiFiClientRepeatedly(intervalInSeconds: 1.0)
         }
