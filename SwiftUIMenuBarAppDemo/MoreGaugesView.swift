@@ -83,24 +83,30 @@ struct MoreGaugesView: View {
             Text("SSID: \(ssidName)")
                 .font(.system(size: 14, design: .monospaced))
                 .foregroundColor(.primary)
-            Text("Signal strength: ")
-                .font(.system(size: 14, design: .monospaced))
-                .foregroundColor(.primary) +
-            Text(rssi.signalDescription)
-                .font(.system(size: 14, design: .monospaced))
-                .foregroundColor(rssi.accentColor)
-            Text("Noise level: ")
-                .font(.system(size: 14, design: .monospaced))
-                .foregroundColor(.primary) +
-            Text(noise.signalDescription)
-                .font(.system(size: 14, design: .monospaced))
-                .foregroundColor(noise.accentColor)
-            Text("SNR value: ")
-                .font(.system(size: 14, design: .monospaced))
-                .foregroundColor(.primary) +
-            Text(snr.signalDescription)
-                .font(.system(size: 14, design: .monospaced))
-                .foregroundColor(snr.accentColor)
+            HStack {
+                Text("Signal strength: ")
+                    .font(.system(size: 14, design: .monospaced))
+                    .foregroundColor(.primary)
+                Text(rssi.signalDescription)
+                    .font(.system(size: 14, design: .monospaced))
+                    .foregroundColor(rssi.accentColor)
+            }
+            HStack {
+                Text("Noise level: ")
+                    .font(.system(size: 14, design: .monospaced))
+                    .foregroundColor(.primary)
+                Text(noise.signalDescription)
+                    .font(.system(size: 14, design: .monospaced))
+                    .foregroundColor(noise.accentColor)
+            }
+            HStack {
+                Text("SNR value: ")
+                    .font(.system(size: 14, design: .monospaced))
+                    .foregroundColor(.primary)
+                Text(snr.signalDescription)
+                    .font(.system(size: 14, design: .monospaced))
+                    .foregroundColor(snr.accentColor)
+            }
         }
     }
     
