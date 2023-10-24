@@ -7,7 +7,7 @@
 ## Requirements
 
 * macOS Ventura
-* Xcode version: min. 14.1
+* Xcode version: min. 15.0.1
 
 ## Setup
 
