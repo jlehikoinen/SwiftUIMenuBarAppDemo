@@ -84,7 +84,7 @@ struct MoreGaugesView: View {
                 .font(.system(size: 14, design: .monospaced))
                 .foregroundColor(.primary)
             HStack {
-                Text("Signal strength: ")
+                Text("Signal strength:")
                     .font(.system(size: 14, design: .monospaced))
                     .foregroundColor(.primary)
                 Text(rssi.signalDescription)
@@ -92,7 +92,7 @@ struct MoreGaugesView: View {
                     .foregroundColor(rssi.accentColor)
             }
             HStack {
-                Text("Noise level: ")
+                Text("Noise level:")
                     .font(.system(size: 14, design: .monospaced))
                     .foregroundColor(.primary)
                 Text(noise.signalDescription)
@@ -100,7 +100,7 @@ struct MoreGaugesView: View {
                     .foregroundColor(noise.accentColor)
             }
             HStack {
-                Text("SNR value: ")
+                Text("SNR value:")
                     .font(.system(size: 14, design: .monospaced))
                     .foregroundColor(.primary)
                 Text(snr.signalDescription)
